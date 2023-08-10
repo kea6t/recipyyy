@@ -87,19 +87,19 @@
 
 
 // not working stripe css
-const dotenv = require('dotenv');
+
 const express = require('express');
 const {ApolloServer} = require('apollo-server-express');
 const path = require('path');
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+const stripe = require("stripe")('sk_test_51LwUjsKzkAHe1megvrsztdqumBgXXSA2GaSJxJxnFPjkqOtXLIkMt0z8RfAi7FMPckFtIMrOSu1ZpWVZngkt2Smj00k5LCx2p6');
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const dotenv = require('dotenv');
+dotenv.config();
 
 const {typeDefs, resolvers} = require('./schemas');
 const {authMiddleware} = require('./utils/auth');
 const db = require('./config/connection');
-
-dotenv.config();
 
 const PORT = process.env.PORT || 3001;
 const server = new ApolloServer({
